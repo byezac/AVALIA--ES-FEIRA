@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback - Estande P.J.D.</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,57 +43,53 @@
                 <input type="text" id="nome" name="nome" placeholder="Como podemos te chamar?">
             </div>
 
-            <fieldset class="rating-group">
-                <legend>Avalie sua experiência</legend>
-
-                <div class="rating-item">
-                    <label for="criatividade">Criatividade do Estande</label>
-                    <div class="star-rating">
-                        <input type="radio" id="criatividade5" name="criatividade" value="5">
-                        <label for="criatividade5">★</label>
-                        <input type="radio" id="criatividade4" name="criatividade" value="4">
-                        <label for="criatividade4">★</label>
-                        <input type="radio" id="criatividade3" name="criatividade" value="3">
-                        <label for="criatividade3">★</label>
-                        <input type="radio" id="criatividade2" name="criatividade" value="2">
-                        <label for="criatividade2">★</label>
-                        <input type="radio" id="criatividade1" name="criatividade" value="1">
-                        <label for="criatividade1">★</label>
-                    </div>
+            <div class="rating-group">
+                <h3>Criatividade do Estande</h3>
+                <div class="stars" data-rating="criatividade">
+                    <input type="radio" name="criatividade" value="1" id="criatividade-1">
+                    <label for="criatividade-1">★</label>
+                    <input type="radio" name="criatividade" value="2" id="criatividade-2">
+                    <label for="criatividade-2">★</label>
+                    <input type="radio" name="criatividade" value="3" id="criatividade-3">
+                    <label for="criatividade-3">★</label>
+                    <input type="radio" name="criatividade" value="4" id="criatividade-4">
+                    <label for="criatividade-4">★</label>
+                    <input type="radio" name="criatividade" value="5" id="criatividade-5">
+                    <label for="criatividade-5">★</label>
                 </div>
+            </div>
 
-                <div class="rating-item">
-                    <label for="projetos">Qualidade dos projetos apresentados</label>
-                    <div class="star-rating">
-                        <input type="radio" id="projetos5" name="projetos" value="5">
-                        <label for="projetos5">★</label>
-                        <input type="radio" id="projetos4" name="projetos" value="4">
-                        <label for="projetos4">★</label>
-                        <input type="radio" id="projetos3" name="projetos" value="3">
-                        <label for="projetos3">★</label>
-                        <input type="radio" id="projetos2" name="projetos" value="2">
-                        <label for="projetos2">★</label>
-                        <input type="radio" id="projetos1" name="projetos" value="1">
-                        <label for="projetos1">★</label>
-                    </div>
+            <div class="rating-group">
+                <h3>Qualidade dos Projetos</h3>
+                <div class="stars" data-rating="projetos">
+                    <input type="radio" name="projetos" value="1" id="projetos-1">
+                    <label for="projetos-1">★</label>
+                    <input type="radio" name="projetos" value="2" id="projetos-2">
+                    <label for="projetos-2">★</label>
+                    <input type="radio" name="projetos" value="3" id="projetos-3">
+                    <label for="projetos-3">★</label>
+                    <input type="radio" name="projetos" value="4" id="projetos-4">
+                    <label for="projetos-4">★</label>
+                    <input type="radio" name="projetos" value="5" id="projetos-5">
+                    <label for="projetos-5">★</label>
                 </div>
+            </div>
 
-                <div class="rating-item">
-                    <label for="interatividade">Interatividade com os visitantes</label>
-                    <div class="star-rating">
-                        <input type="radio" id="interatividade1" name="interatividade" value="1">
-                        <label for="interatividade1">★</label>
-                        <input type="radio" id="interatividade2" name="interatividade" value="2">
-                        <label for="interatividade2">★</label>
-                        <input type="radio" id="interatividade3" name="interatividade" value="3">
-                        <label for="interatividade3">★</label>
-                        <input type="radio" id="interatividade4" name="interatividade" value="4">
-                        <label for="interatividade4">★</label>
-                        <input type="radio" id="interatividade5" name="interatividade" value="5">
-                        <label for="interatividade5">★</label>
-                    </div>
+            <div class="rating-group">
+                <h3>Interatividade com os Visitantes</h3>
+                <div class="stars" data-rating="interatividade">
+                    <input type="radio" name="interatividade" value="1" id="interatividade-1">
+                    <label for="interatividade-1">★</label>
+                    <input type="radio" name="interatividade" value="2" id="interatividade-2">
+                    <label for="interatividade-2">★</label>
+                    <input type="radio" name="interatividade" value="3" id="interatividade-3">
+                    <label for="interatividade-3">★</label>
+                    <input type="radio" name="interatividade" value="4" id="interatividade-4">
+                    <label for="interatividade-4">★</label>
+                    <input type="radio" name="interatividade" value="5" id="interatividade-5">
+                    <label for="interatividade-5">★</label>
                 </div>
-            </fieldset>
+            </div>
 
             <div class="input-group">
                 <label for="comentarios">Sua mensagem</label>

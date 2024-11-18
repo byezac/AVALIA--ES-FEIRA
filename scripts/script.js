@@ -55,4 +55,32 @@ function backupAvaliacoes() {
         };
         localStorage.setItem('avaliacoes_backup', JSON.stringify(backup));
     }
-} 
+}
+
+// Função para gerenciar a seleção das estrelas
+function initializeStarRatings() {
+    const ratingGroups = document.querySelectorAll('.rating-group');
+    
+    ratingGroups.forEach(group => {
+        const stars = group.querySelectorAll('input[type="radio"]');
+        
+        stars.forEach(star => {
+            star.addEventListener('change', (e) => {
+                const value = e.target.value;
+                const name = e.target.name;
+                
+                // Limpa outras seleções no mesmo grupo
+                stars.forEach(s => {
+                    if (s.name === name && s.value <= value) {
+                        s.checked = true;
+                    } else if (s.name === name) {
+                        s.checked = false;
+                    }
+                });
+            });
+        });
+    });
+}
+
+// Inicializa o sistema de rating quando o documento carregar
+document.addEventListener('DOMContentLoaded', initializeStarRatings); 

@@ -153,38 +153,30 @@ legend {
     border: 1px solid var(--border-color);
 }
 
-.star-rating {
+.stars {
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
 }
 
-.star-rating input {
+.stars input {
     display: none;
 }
 
-.star-rating label {
-    font-size: 2rem;
-    color: var(--border-color);
+.stars label {
     cursor: pointer;
-    transition: color 0.2s ease;
+    font-size: 25px;
+    color: #ddd;
+    padding: 5px;
 }
 
-.star-rating label:hover,
-.star-rating label:hover ~ label,
-.star-rating input:checked ~ label {
-    color: var(--star-color);
+.stars input:checked ~ label {
+    color: #ffd700;
 }
 
-.star-rating:hover input:checked ~ label {
-    color: var(--border-color);
-}
-
-.star-rating:hover label:hover,
-.star-rating:hover label:hover ~ label {
-    color: var(--star-color);
+.stars label:hover,
+.stars label:hover ~ label {
+    color: #ffd700;
 }
 
 .button-group {
@@ -258,13 +250,13 @@ form {
         padding: 1rem;
     }
 
-    .star-rating {
+    .stars {
         gap: 0.8rem;
         justify-content: center;
         margin: 1rem 0;
     }
 
-    .star-rating label {
+    .stars label {
         font-size: 2.5rem;
         padding: 0.5rem 0.3rem;
     }
@@ -301,11 +293,11 @@ form {
 }
 
 @media (max-width: 360px) {
-    .star-rating {
+    .stars {
         gap: 0.5rem;
     }
 
-    .star-rating label {
+    .stars label {
         font-size: 2rem;
     }
 }
@@ -318,13 +310,13 @@ form {
     }
 }
 
-.star-rating label {
+.stars label {
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
     padding: 0.5rem;
 }
 
-.star-rating {
+.stars {
     user-select: none;
     -webkit-user-select: none;
 } 
