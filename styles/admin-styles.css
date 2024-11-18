@@ -1,0 +1,326 @@
+:root {
+    --primary-color: #2196f3;
+    --background-color: #1a1a2e;
+    --card-background: #16213e;
+    --text-color: #ffffff;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --success-color: #4CAF50;
+    --hover-color: #1976d2;
+    --star-color: #ffd700;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.dashboard {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+/* Header Styles */
+header {
+    background: var(--card-background);
+    padding: 1.5rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    color: var(--text-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.export-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.export-btn:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.search-box input,
+#filtroNota {
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.search-box input {
+    width: 300px;
+}
+
+.search-box input:focus,
+#filtroNota:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+#filtroNota {
+    color: var(--text-color);
+}
+
+#filtroNota option {
+    background-color: var(--card-background);
+    color: var(--text-color);
+}
+
+/* Stats Cards */
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--card-background);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.stat-card h3 {
+    color: var(--text-color);
+    opacity: 0.8;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0.5rem 0;
+}
+
+.star-display {
+    color: var(--star-color);
+    font-size: 1.2rem;
+}
+
+/* Avaliações Container */
+.avaliacoes-container {
+    background: var(--card-background);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.avaliacoes-container h2 {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.avaliacoes-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.avaliacao-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s ease;
+}
+
+.avaliacao-card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.avaliacao-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.nome-usuario {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.data-avaliacao {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.notas {
+    display: grid;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.nota-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nota-item span {
+    min-width: 120px;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.estrelas {
+    color: var(--star-color);
+    font-size: 1.1rem;
+}
+
+.comentario {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-color);
+    opacity: 0.9;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .dashboard {
+        padding: 1rem;
+    }
+
+    .header-actions {
+        flex-direction: column;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .stats-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .avaliacoes-container {
+        padding: 1rem;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.avaliacao-card {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.clear-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.clear-btn:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+.clear-btn svg {
+    width: 16px;
+    height: 16px;
+} 

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Estande P.J.D.</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+ 
+
+    <header>
+        <div class="image-gallery">
+            <div class="image-container">
+                <img src="img/Design sem nome.svg" alt="Logo P.J.D." class="gallery-image">
+            </div>
+            <div class="image-container">
+                <img src="img/EETEPA XINGUARA com letra.png" alt="Logo EETEP" class="gallery-image">
+            </div>
+            <div class="image-container">
+                <img src="img/governo do pará.png" alt="Logo Governo do Pará" class="gallery-image">
+            </div>
+            <div class="image-container">
+                <img src="img/sectet.png" alt="Logo SECTET" class="gallery-image">
+            </div>
+        </div>
+        <div class="header-content">
+            <h1>Sua opinião é importante para nós!</h1>
+            <p class="subtitle">Ajude-nos a melhorar compartilhando sua experiência com nosso estande</p>
+        </div>
+    </header>
+
+  
+
+    <main>
+        <form id="avaliacaoForm" action="submit_feedback.php" method="POST">
+            <div class="input-group">
+                <label for="nome">Nome (opcional)</label>
+                <input type="text" id="nome" name="nome" placeholder="Como podemos te chamar?">
+            </div>
+
+            <fieldset class="rating-group">
+                <legend>Avalie sua experiência</legend>
+
+                <div class="rating-item">
+                    <label for="criatividade">Criatividade do Estande</label>
+                    <div class="star-rating">
+                        <input type="radio" id="criatividade5" name="criatividade" value="5">
+                        <label for="criatividade5">★</label>
+                        <input type="radio" id="criatividade4" name="criatividade" value="4">
+                        <label for="criatividade4">★</label>
+                        <input type="radio" id="criatividade3" name="criatividade" value="3">
+                        <label for="criatividade3">★</label>
+                        <input type="radio" id="criatividade2" name="criatividade" value="2">
+                        <label for="criatividade2">★</label>
+                        <input type="radio" id="criatividade1" name="criatividade" value="1">
+                        <label for="criatividade1">★</label>
+                    </div>
+                </div>
+
+                <div class="rating-item">
+                    <label for="projetos">Qualidade dos projetos apresentados</label>
+                    <div class="star-rating">
+                        <input type="radio" id="projetos5" name="projetos" value="5">
+                        <label for="projetos5">★</label>
+                        <input type="radio" id="projetos4" name="projetos" value="4">
+                        <label for="projetos4">★</label>
+                        <input type="radio" id="projetos3" name="projetos" value="3">
+                        <label for="projetos3">★</label>
+                        <input type="radio" id="projetos2" name="projetos" value="2">
+                        <label for="projetos2">★</label>
+                        <input type="radio" id="projetos1" name="projetos" value="1">
+                        <label for="projetos1">★</label>
+                    </div>
+                </div>
+
+                <div class="rating-item">
+                    <label for="interatividade">Interatividade com os visitantes</label>
+                    <div class="star-rating">
+                        <input type="radio" id="interatividade1" name="interatividade" value="1">
+                        <label for="interatividade1">★</label>
+                        <input type="radio" id="interatividade2" name="interatividade" value="2">
+                        <label for="interatividade2">★</label>
+                        <input type="radio" id="interatividade3" name="interatividade" value="3">
+                        <label for="interatividade3">★</label>
+                        <input type="radio" id="interatividade4" name="interatividade" value="4">
+                        <label for="interatividade4">★</label>
+                        <input type="radio" id="interatividade5" name="interatividade" value="5">
+                        <label for="interatividade5">★</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="input-group">
+                <label for="comentarios">Sua mensagem</label>
+                <textarea id="comentarios" name="comentarios" rows="4" 
+                    placeholder="Conte-nos o que achou e como podemos melhorar"></textarea>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="submit-btn">Enviar Feedback</button>
+            </div>
+        </form>
+    </main>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+    <script src="scripts/firebase-config.js"></script>
+    <script src="scripts/script.js"></script>
+    <footer>
+        <p>P.J.D. - Feira das Profissões &copy; 2024</p>
+    </footer>
+</body>
+</html>
