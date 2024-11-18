@@ -153,8 +153,28 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Função global que será chamada pelo botão
-function limparAvaliacoes() {
-    AvaliacoesManager.limparAvaliacoes();
+async function limparAvaliacoes() {
+    if (!confirm('Tem certeza que deseja limpar todas as avaliações? Esta ação não pode ser desfeita.')) {
+        return;
+    }
+
+    try {
+        // Referência direta ao nó 'avaliacoes' no Firebase
+        const avaliacoesRef = db.ref('avaliacoes');
+        
+        // Remove todos os dados
+        await avaliacoesRef.remove();
+        
+        alert('Todas as avaliações foram removidas com sucesso!');
+        
+        // Atualiza a interface
+        if (window.avaliacoesManager) {
+            window.avaliacoesManager.renderizarDashboard();
+        }
+    } catch (error) {
+        console.error('Erro ao limpar avaliações:', error);
+        alert('Erro ao limpar avaliações: ' + error.message);
+    }
 }
 
 // Função para exportar CSV
