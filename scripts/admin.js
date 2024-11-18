@@ -30,9 +30,9 @@ class AvaliacoesManager {
         };
 
         const soma = this.avaliacoes.reduce((acc, av) => ({
-            criatividade: acc.criatividade + Number(av.criatividade),
-            projetos: acc.projetos + Number(av.projetos),
-            interatividade: acc.interatividade + Number(av.interatividade)
+            criatividade: acc.criatividade + Number(av.criatividade || 0),
+            projetos: acc.projetos + Number(av.projetos || 0),
+            interatividade: acc.interatividade + Number(av.interatividade || 0)
         }), { criatividade: 0, projetos: 0, interatividade: 0 });
 
         const total = this.avaliacoes.length;
@@ -56,7 +56,11 @@ class AvaliacoesManager {
     }
 
     criarEstrelas(nota) {
-        return '★'.repeat(nota) + '☆'.repeat(5 - nota);
+        const numeroNota = parseInt(nota);
+        if (isNaN(numeroNota) || numeroNota < 1 || numeroNota > 5) {
+            return '☆☆☆☆☆';
+        }
+        return '★'.repeat(numeroNota) + '☆'.repeat(5 - numeroNota);
     }
 
     formatarData(data) {
@@ -77,15 +81,15 @@ class AvaliacoesManager {
         avaliacoesArray.forEach(avaliacao => {
             const clone = template.content.cloneNode(true);
             
-            clone.querySelector('.nome-usuario').textContent = avaliacao.nome;
+            clone.querySelector('.nome-usuario').textContent = avaliacao.nome || 'Anônimo';
             clone.querySelector('.data-avaliacao').textContent = this.formatarData(avaliacao.data);
             
             const notasItems = clone.querySelectorAll('.nota-item .estrelas');
-            notasItems[0].textContent = this.criarEstrelas(avaliacao.criatividade);
-            notasItems[1].textContent = this.criarEstrelas(avaliacao.projetos);
-            notasItems[2].textContent = this.criarEstrelas(avaliacao.interatividade);
+            notasItems[0].textContent = this.criarEstrelas(Number(avaliacao.criatividade));
+            notasItems[1].textContent = this.criarEstrelas(Number(avaliacao.projetos));
+            notasItems[2].textContent = this.criarEstrelas(Number(avaliacao.interatividade));
             
-            clone.querySelector('.comentario').textContent = avaliacao.comentarios;
+            clone.querySelector('.comentario').textContent = avaliacao.comentarios || '';
             
             container.appendChild(clone);
         });

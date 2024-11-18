@@ -7,12 +7,6 @@ document.getElementById('avaliacaoForm').addEventListener('submit', function(e) 
         const projetos = document.querySelector('input[name="projetos"]:checked');
         const interatividade = document.querySelector('input[name="interatividade"]:checked');
 
-        console.log('Valores selecionados:', {
-            criatividade: criatividade?.value,
-            projetos: projetos?.value,
-            interatividade: interatividade?.value
-        });
-
         if (!criatividade || !projetos || !interatividade) {
             alert('Por favor, avalie todas as categorias antes de enviar.');
             return;
@@ -20,9 +14,9 @@ document.getElementById('avaliacaoForm').addEventListener('submit', function(e) 
 
         const avaliacao = {
             nome: document.getElementById('nome').value || 'Anônimo',
-            criatividade: criatividade.value,
-            projetos: projetos.value,
-            interatividade: interatividade.value,
+            criatividade: Number(criatividade.value),
+            projetos: Number(projetos.value),
+            interatividade: Number(interatividade.value),
             comentarios: document.getElementById('comentarios').value,
             data: new Date().toISOString()
         };
