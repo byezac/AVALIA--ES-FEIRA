@@ -134,47 +134,72 @@ class AvaliacoesManager {
         });
     }
 
-    limparAvaliacoes() {
-        if (confirm('Tem certeza que deseja limpar todas as avaliações?')) {
-            db.ref('avaliacoes').remove()
-                .then(() => {
-                    alert('Avaliações removidas com sucesso!');
-                })
-                .catch(error => {
-                    console.error('Erro ao limpar:', error);
-                    alert('Erro ao limpar avaliações.');
-                });
+    static async limparAvaliacoes() {
+        if (confirm('Tem certeza que deseja limpar todas as avaliações? Esta ação não pode ser desfeita.')) {
+            try {
+                await db.ref('avaliacoes').remove();
+                alert('Avaliações removidas com sucesso!');
+            } catch (error) {
+                console.error('Erro ao limpar:', error);
+                alert('Erro ao limpar avaliações: ' + error.message);
+            }
         }
     }
 }
 
 // Inicializar quando o documento estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
-    new AvaliacoesManager();
-}); 
+    window.avaliacoesManager = new AvaliacoesManager();
+});
 
-// Exportar avaliações para CSV
-function exportarCSV() {
-    const avaliacoes = JSON.parse(localStorage.getItem('avaliacoes') || '[]');
-    let csv = 'Nome,Data,Criatividade,Projetos,Interatividade,Comentários\n';
-    
-    avaliacoes.forEach(av => {
-        csv += `"${av.nome}","${new Date(av.data).toLocaleString()}",${av.criatividade},${av.projetos},${av.interatividade},"${av.comentarios}"\n`;
-    });
-
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'avaliacoes.csv';
-    a.click();
-} 
-
-// Adicione esta função no final do arquivo
+// Função global que será chamada pelo botão
 function limparAvaliacoes() {
-    if (confirm('Tem certeza que deseja limpar todas as avaliações? Esta ação não pode ser desfeita.')) {
-        localStorage.removeItem('avaliacoes');
-        // Recarrega a página para atualizar o dashboard
-        window.location.reload();
+    AvaliacoesManager.limparAvaliacoes();
+}
+
+// Função para exportar CSV
+async function exportarCSV() {
+    try {
+        // Busca os dados do Firebase
+        const snapshot = await db.ref('avaliacoes').once('value');
+        const avaliacoes = [];
+        
+        snapshot.forEach((child) => {
+            avaliacoes.push({
+                id: child.key,
+                ...child.val()
+            });
+        });
+
+        // Cria o cabeçalho do CSV
+        let csv = 'Nome,Data,Criatividade,Projetos,Interatividade,Comentários\n';
+        
+        // Adiciona cada avaliação ao CSV
+        avaliacoes.forEach(av => {
+            const linha = [
+                `"${av.nome || 'Anônimo'}"`,
+                `"${new Date(av.data).toLocaleString('pt-BR')}"`,
+                av.criatividade,
+                av.projetos,
+                av.interatividade,
+                `"${(av.comentarios || '').replace(/"/g, '""')}"` // Escapa aspas duplas nos comentários
+            ].join(',');
+            
+            csv += linha + '\n';
+        });
+
+        // Cria e faz o download do arquivo
+        const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `avaliacoes_${new Date().toISOString().split('T')[0]}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    } catch (error) {
+        console.error('Erro ao exportar:', error);
+        alert('Erro ao exportar avaliações: ' + error.message);
     }
 } 
