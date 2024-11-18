@@ -241,14 +241,15 @@ form {
 
 @media (max-width: 768px) {
     .image-gallery {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         gap: 1rem;
         padding: 1rem;
+        overflow-x: auto;
     }
 
     .image-container {
-        flex: 0 1 calc(50% - 0.5rem);
-        max-width: none;
+        flex: 1;
+        max-width: 150px;
     }
 
     .rating-item {
@@ -293,7 +294,7 @@ form {
 
 @media (max-width: 480px) {
     .image-container {
-        flex: 0 1 100%;
+        flex: 1;
     }
 }
 
