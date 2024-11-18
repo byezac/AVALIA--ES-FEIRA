@@ -253,10 +253,78 @@ form {
         flex: 0 1 calc(50% - 0.5rem);
         max-width: none;
     }
+
+    .rating-item {
+        padding: 1rem;
+    }
+
+    .star-rating {
+        gap: 0.8rem;
+        justify-content: center;
+        margin: 1rem 0;
+    }
+
+    .star-rating label {
+        font-size: 2.5rem;
+        padding: 0.5rem 0.3rem;
+    }
+
+    .rating-group {
+        gap: 1.5rem;
+    }
+
+    form {
+        padding: 1rem;
+    }
+
+    .rating-item label {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+    }
+
+    textarea {
+        min-height: 100px;
+    }
 }
 
 @media (max-width: 480px) {
     .image-container {
         flex: 0 1 100%;
     }
+}
+
+@media (max-width: 360px) {
+    .star-rating {
+        gap: 0.5rem;
+    }
+
+    .star-rating label {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) { 
+    select,
+    textarea,
+    input {
+        font-size: 16px !important;
+    }
+}
+
+.star-rating label {
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.star-rating {
+    user-select: none;
+    -webkit-user-select: none;
 } 
