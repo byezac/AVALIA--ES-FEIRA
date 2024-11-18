@@ -2,6 +2,7 @@ checkAuth();
 
 class AvaliacoesManager {
     constructor() {
+        console.log('Iniciando AvaliacoesManager');
         this.avaliacoes = [];
         this.setupEventListeners();
         this.carregarAvaliacoes();
@@ -116,7 +117,9 @@ class AvaliacoesManager {
     }
 
     carregarAvaliacoes() {
+        console.log('Tentando carregar avaliações');
         db.ref('avaliacoes').on('value', (snapshot) => {
+            console.log('Dados recebidos:', snapshot.val());
             this.avaliacoes = [];
             snapshot.forEach((child) => {
                 this.avaliacoes.push({
@@ -124,7 +127,10 @@ class AvaliacoesManager {
                     ...child.val()
                 });
             });
+            console.log('Avaliações processadas:', this.avaliacoes);
             this.renderizarDashboard();
+        }, (error) => {
+            console.error('Erro ao carregar:', error);
         });
     }
 
