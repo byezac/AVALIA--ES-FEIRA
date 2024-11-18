@@ -57,18 +57,20 @@ function initializeStarRatings() {
     
     ratingGroups.forEach(group => {
         const stars = group.querySelectorAll('input[type="radio"]');
+        const labels = group.querySelectorAll('label');
         
-        stars.forEach(star => {
-            star.addEventListener('change', (e) => {
-                const value = e.target.value;
-                const name = e.target.name;
+        // Adiciona evento de clique para cada label
+        labels.forEach((label, index) => {
+            label.addEventListener('click', () => {
+                const value = 5 - index; // Inverte o índice para corresponder ao valor correto
+                const name = stars[index].name;
                 
-                // Limpa outras seleções no mesmo grupo
-                stars.forEach(s => {
-                    if (s.name === name && s.value <= value) {
-                        s.checked = true;
-                    } else if (s.name === name) {
-                        s.checked = false;
+                // Marca o input correspondente
+                stars.forEach(star => {
+                    if (star.value <= value && star.name === name) {
+                        star.checked = true;
+                    } else if (star.name === name) {
+                        star.checked = false;
                     }
                 });
             });

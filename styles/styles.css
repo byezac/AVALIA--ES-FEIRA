@@ -170,12 +170,21 @@ legend {
     padding: 5px;
 }
 
+.stars label:hover,
+.stars label:hover ~ label {
+    color: #ffd700;
+}
+
 .stars input:checked ~ label {
     color: #ffd700;
 }
 
-.stars label:hover,
-.stars label:hover ~ label {
+.stars:hover input:checked ~ label {
+    color: #ddd;
+}
+
+.stars:hover label:hover,
+.stars:hover label:hover ~ label {
     color: #ffd700;
 }
 

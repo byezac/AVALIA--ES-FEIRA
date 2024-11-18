@@ -29,20 +29,33 @@ class AvaliacoesManager {
             mediaInteratividade: 0
         };
 
-        const soma = this.avaliacoes.reduce((acc, av) => ({
-            criatividade: acc.criatividade + Number(av.criatividade || 0),
-            projetos: acc.projetos + Number(av.projetos || 0),
-            interatividade: acc.interatividade + Number(av.interatividade || 0)
-        }), { criatividade: 0, projetos: 0, interatividade: 0 });
+        let totalValido = 0;
+        const soma = this.avaliacoes.reduce((acc, av) => {
+            if (av.criatividade && av.projetos && av.interatividade) {
+                totalValido++;
+                return {
+                    criatividade: acc.criatividade + Number(av.criatividade),
+                    projetos: acc.projetos + Number(av.projetos),
+                    interatividade: acc.interatividade + Number(av.interatividade)
+                };
+            }
+            return acc;
+        }, { criatividade: 0, projetos: 0, interatividade: 0 });
 
-        const total = this.avaliacoes.length;
+        if (totalValido === 0) return {
+            mediaGeral: 0,
+            total: 0,
+            mediaCriatividade: 0,
+            mediaProjetos: 0,
+            mediaInteratividade: 0
+        };
 
         return {
-            mediaGeral: ((soma.criatividade + soma.projetos + soma.interatividade) / (total * 3)).toFixed(1),
-            total: total,
-            mediaCriatividade: (soma.criatividade / total).toFixed(1),
-            mediaProjetos: (soma.projetos / total).toFixed(1),
-            mediaInteratividade: (soma.interatividade / total).toFixed(1)
+            mediaGeral: ((soma.criatividade + soma.projetos + soma.interatividade) / (totalValido * 3)).toFixed(1),
+            total: totalValido,
+            mediaCriatividade: (soma.criatividade / totalValido).toFixed(1),
+            mediaProjetos: (soma.projetos / totalValido).toFixed(1),
+            mediaInteratividade: (soma.interatividade / totalValido).toFixed(1)
         };
     }
 
